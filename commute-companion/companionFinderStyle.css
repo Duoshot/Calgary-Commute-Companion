@@ -1,0 +1,326 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 4-Mar-2016, 8:54:25 PM
+    Author     : Gorman
+*/
+
+body {
+    background: url("/images/commute-background.jpg") no-repeat fixed center center;
+    background-size: cover;
+    font-family: Montserrat;
+}
+
+.logo {
+    width: 480px;
+    height: 300px;
+    background: url("/images/logo.png") no-repeat center center;
+    margin: 30px auto;
+}
+
+/* Collects left and right panels*/
+.finder-content {
+    width: 100%;
+    overflow:auto;
+    padding:2px;
+    padding-bottom : 100px;
+}
+
+/* Left Panel */
+.transit-info-block {
+    position: relative;
+    width: 40%;
+    padding: 20px;
+    text-align: Center;
+    background: #fff;
+    border-radius: 5px;
+    border: 5px solid #cf0909;
+    margin-left : 75px;
+    background-color: rgba(255,255,255,0.8);
+    float: center;
+    -webkit-transition: 1s;
+    transition: 1s;
+}
+
+/* Right Panel*/
+#matches-found-block.transit-info-block{
+    float: right;
+    display : none;
+    margin-right: 75px;
+}
+
+#map-block.transit-info-block{
+    margin-right : 200px;
+    float : right;
+    display : none;
+    width : 600px;
+    height : 500px;
+}
+
+/* Individual Matches in the list*/
+#match-found-item{
+    list-style-type: none;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #cf0909;
+    margin:0.45em;
+    margin-right: 45px;
+    
+    vertical-align: middle;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+} 
+
+#match-found-item:hover{
+    background: #ff7b81;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+} 
+
+.transit-info-block a:visited, a:link, a:hover, a:active{
+    color:black;
+    text-decoration: none;
+}
+
+.transit-info-block h1 {
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.transit-info-block input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: Montserrat;
+    padding: 0 20px 0 50px;
+    outline: none;
+}
+
+#noMatchesFound{
+    text-align: center;
+    vertical-align: middle;  
+    font-weight: bold;
+}
+
+.transit-info-block input#stop_from, input#route_no{
+    background: #fff url("/images/train-icons.png") 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.transit-info-block input#stop_from:focus, input#route_no:focus{
+    background: #fff url("/images/train-icons.png") 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.transit-info-block input#stop_departure_time {
+    background: #fff url("/images/clock-icons.png") 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.transit-info-block input#stop_departure_time:focus {
+    background: #fff url("/images/clock-icons.png") 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.transit-info-block input#stop_to {
+    background: #fff url("/images/dest-icons.png") 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.transit-info-block input#stop_to:focus {
+    background: #fff url("/images/dest-icons.png") 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+
+.transit-info-block input:active, .transit-info-block input:focus {
+    border: 1px solid #cf0909;
+}
+
+.transit-info-block button {
+    margin-top : 15px;
+    width: 100%;
+    height: 40px;
+    background: #cf0909;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #cf0909;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: Montserrat;
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+
+.transit-info-block button:before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ff7b81;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 0 50%;
+    transform-origin: 0 50%;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.transit-info-block button:hover:before, .transit-info-block button:focus:before, .transit-info-block button:active:before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+
+#viewProfile{
+    visibility: collapsed;
+}
+
+.modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+.modalDialog > div {
+    width: 400px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+}
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+.close:hover {
+    background: #00d9ff;
+}
+
+#profile-picture img {
+    margin : 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.msg:before {
+  content: "\f138";
+  position: absolute;
+  right: 1em;
+  padding: 0 1px;
+  font-family: FontAwesome;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.msg{
+    text-align: center;
+    color: white;
+    font-family: Montserrat;
+    background-color: #cf0909;
+    padding: 20px;
+    padding-left: 20px;
+    border-radius: 5px;
+    border: 1px solid #cf0909;
+    margin-top: 20px;
+    
+      
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  padding-right: 2.2em;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+
+.msg:hover:before, .msg:focus:before, .msg:active:before {
+  -webkit-transform: translateX(4px);
+  transform: translateX(4px);
+}
